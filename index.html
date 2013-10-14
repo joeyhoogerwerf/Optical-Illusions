@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="assets/css/style.css">
+	
+	<!--Import Recaptcha AJAX-->
+	<script src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
+	
+	<!--Import jQuery + libraries/plugins-->
+	<script src="assets/js/jquery.1.7.2_min.js"></script>
+	<script src="assets/js/jquery.easing.1.3.js"></script>
+	<script src="assets/js/jquery.scrollTo.js"></script>
+	<script src="assets/js/jquery.doTimeout.1.0_min.js"></script>
+	<script src="assets/js/jquery.shadow.js"></script>
+	<script src="assets/js/jquery.animate-textshadow.js"></script>
+	<script src="assets/js/jquery.colorAnimation.js"></script>
+	<script src="assets/js/jquery.tipsy.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/mustache.js"></script>
+	<script src="assets/js/micro.templating.js"></script>
+	<script src="assets/js/jquery.animate.css.rotate.scale.js "></script>
+	<script src="assets/js/jquery-css-transform.js"></script>
+	
+<script>
+$(function(){
+	console.log('Welcome to Optical Illusions!');
+	
+	$(window).scroll(function(){
+		console.log('User is scrolling!');
+
+	});
+	
+	$.getJSON('https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=optical%20illusions&start=60&callback=?', function(d){
+		console.log(d);
+		
+		$(d.responseData.results).each(function(imgD){
+			console.log('dd: ' + d.responseData.results[0].unescapedUrl);
+			$('#wrapper').append('<img src="' + d.responseData.results[imgD].unescapedUrl + '" />');
+		});
+	});
+	
+	function processResults(d){
+		console.log('Data fetched! ^_^');
+		console.log(d);
+	}
+});
+</script>
+</head>
+<body>
+	<h1>0ptical 1llusions</h1>
+	<div id="wrapper">
+	
+	</div>
+</body>
+</html>
